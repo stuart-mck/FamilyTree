@@ -1,0 +1,18 @@
+<div class="container">
+  <h1><a routerLink="/" routerLinkActive="active">Family Reunion</a></h1>
+  <div class="row">
+   
+   <div class="col-sm-2">
+      <nav>
+        <a routerLink="/" routerLinkActive="active">Home</a><br />
+        <a routerLink="/history" routerLinkActive="active">Family History</a><br />
+        <a routerLink="/tree" routerLinkActive="active">Family Tree</a><br />
+        <a routerLink="/events" routerLinkActive="active">Events</a><br />
+        <a routerLink="/login" routerLinkActive="active">Log In</a><br />
+      </nav>
+    </div>
+    <div class="col-sm-10">
+      <router-outlet class="col-sm-10"></router-outlet>
+    </div>
+  </div>
+</div>
