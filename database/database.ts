@@ -1,10 +1,11 @@
+
+
 class database{
 
     private _family: Family;
 
-    constructor(){
-        this._family = new Family();
-        
+    constructor(family: Family){
+        this._family = family;
     }
 
     public getFamily(): Family{
