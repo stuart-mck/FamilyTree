@@ -3,7 +3,7 @@ class database{
     private _family: Family;
 
     constructor(){
-        this._family = new Family();
+        this._family = new Family(1);
         
     }
 

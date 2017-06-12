@@ -12,7 +12,7 @@ class Person {
     }
 
     public addRelationship(target: Person, type: relationshipType, startDate: Date){
-        this.Relationships.push(new )
+        //this.Relationships.push(new )
     }
 
     public getParents(): Array<Person> {
