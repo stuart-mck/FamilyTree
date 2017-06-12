@@ -1,4 +1,5 @@
-class Person {
+
+export class Person {
     public EntityId: number;
     public FirstName: string;
     public MiddleName: Array<string>;
@@ -48,4 +49,31 @@ class Person {
         return siblings;
     }
 
+}
+
+export class Relationship {
+    public EntityId: number;
+    public RelationshipType: relationshipType;
+    public RelationshipStatus: relationshipStatus;
+    public Relationship1: Person;
+    public Relationship2: Person;
+    public Children : Array<Person>;
+    constructor(entityId: number, source: Person, target: Person){
+        this.EntityId = entityId;
+        this.Relationship1 = source;
+        this.Relationship2 = target;
+    }
+}
+
+export enum relationshipType{
+    parent,
+    child,
+    spouse
+}
+
+export enum relationshipStatus{
+    married,
+    divorced,
+    adopted,
+    natural
 }
