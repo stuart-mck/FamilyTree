@@ -12,6 +12,9 @@ import { EventsComponent } from './events/events.component';
 import { FrontPageComponent } from './front-page/front-page.component';
 import { LoginComponent } from './login/login.component';
 
+//services
+import {FamilyTreeService} from './services/family-tree.service';
+import {database} from './../model/database/database';
 
 const appRoutes: Routes = [
   { path: 'history', component: HistoryComponent },
@@ -36,7 +39,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [FamilyTreeService, database],
   bootstrap: [AppComponent],
   
 })
