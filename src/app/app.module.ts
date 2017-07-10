@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 //services
 import {FamilyTreeService} from './services/family-tree.service';
 import {database} from './../model/database/database';
+import { EventService } from './services/event.service';
 
 const appRoutes: Routes = [
   { path: 'history', component: HistoryComponent },
@@ -39,7 +40,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [FamilyTreeService, database],
+  providers: [FamilyTreeService, database, EventService],
   bootstrap: [AppComponent],
   
 })

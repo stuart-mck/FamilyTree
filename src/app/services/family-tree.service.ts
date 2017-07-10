@@ -12,7 +12,7 @@ export class FamilyTreeService {
    }
 
   getTree(nodeId: number): Promise<Person[]>{
-    let family = this.db.getFamily();
+    let family = this.db.getFamily(1);
     let people = family.FamilyMembers;
     return Promise.resolve(people);
   };

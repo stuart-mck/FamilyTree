@@ -1,32 +1,61 @@
-import { mockFamily } from './familyTree'; 
+import { mockFamily } from './mockData'; 
 import { Family } from './../familyEntities/Family';
 import { Person } from './../familyEntities/Person';
+import { Event, EventDateTime, Location } from './../eventEntities/event';
 
 export class database{
 
-    private _family: Family;
+    private _families: Array<Family>;
+    private _events: Array<Event>;
+    private _people: Array<Person>;
+
 
     constructor(){
-        this._family = this.buildFamily();
+        this._families = new Array<Family>();
+        this._events = new Array<Event>();
+        this._people = new Array<Person>();
         
+        this.initMockData();
     }
 
-    public getFamily(): Family{
-        return this._family;
+    public getFamily(familyId: number): Family{
+        return this._families.find(function(e){
+            return e.EntityId === familyId;
+        });
     }
 
-    private buildFamily(): Family{
+    public getFamilies(): Family[] {
+        return this._families;
+    }
 
-        var mock = new mockFamily().getMockData()[0];
-        let f= new Family(mock.EntityId);
+    public getPerson(personId: number): Person{
+        return this._people.find(function(p){
+            return p.EntityId === personId;
+        });
+    }
 
-        for(var i = 0; i < mock.FamilyMembers.length; i++){
-            let p = new Person(mock.FamilyMembers[i].EntityId);
-            p.FirstName = mock.FamilyMembers[i].FirstName;
-            p.LastName = mock.FamilyMembers[i].LastName;
-            f.FamilyMembers.push(p);
+    public getEvents(): Array<Event>{
+        return this._events;
+    }
+
+    private initMockData(){
+
+        let mock = new mockFamily().getMockData();
+        for(var fid = 0; fid < mock.Families.length; fid++){
+            let f= new Family(mock.Families[fid].EntityId);
+
+            for(var i = 0; i < mock.Families[fid].FamilyMembers.length; i++){
+                let p = new Person(mock.Families[fid].FamilyMembers[i].EntityId);
+                p.FirstName = mock.Families[fid].FamilyMembers[i].FirstName;
+                p.LastName = mock.Families[fid].FamilyMembers[i].LastName;
+                f.FamilyMembers.push(p);
+                this._people.push(p)
+            }
+            this._families.push(f);
         }
-        return f;
+        for(var eid = 0; eid < mock.Events.length; eid++){
+            this._events.push(mock.Events[eid]); 
+        }           
     }
 }
 
